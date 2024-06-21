@@ -1,0 +1,52 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="w3-card-4 w3-margin">
+    <header class="w3-container w3-blue">
+        <h1>Edition - Combine Labels</h1>
+    </header>
+
+    <div class="w3-container">
+        <form method="POST">
+            <label for="label1">Choose First Label:</label>
+            <select id="label1" name="label1" class="w3-select" required>
+                <option value="">-- Select a label --</option>
+                {% for label in unique_labels %}
+                    <option value="{{ label }}">{{ label }}</option>
+                {% endfor %}
+            </select>
+            <br>
+
+            <label for="label2">Choose Second Label:</label>
+            <select id="label2" name="label2" class="w3-select" required>
+                <option value="">-- Select a label --</option>
+                {% for label in unique_labels %}
+                    <option value="{{ label }}">{{ label }}</option>
+                {% endfor %}
+            </select>
+            <br>
+
+            <label for="combined_label_name">Rename Combined Label:</label>
+            <input type="text" id="combined_label_name" name="combined_label_name" required>
+            <br>
+
+            <label for="save_name">Save Combined Dataset As:</label>
+            <input type="text" id="save_name" name="save_name" required>
+            <button type="submit" class="w3-button w3-blue" name="save_combined">Save Combined Data</button>
+        </form>
+        <br>
+    </div>
+
+    <br>
+    <footer class="w3-container w3-blue">
+        <h5></h5>
+    </footer>
+</div>
+
+{% endblock %}
+	
+	
+	
+	
+	
+	
+	

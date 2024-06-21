@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>TP055697</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/w3.css') }}">
+    <style>
+        /* Style for the entire page */
+        body {
+            background-color: black; /* Set the background color to black */
+            color: white; /* Set the text color to white */
+        }
+
+        /* Style for the navigation links */
+        .w3-sidebar .w3-bar-item.w3-button {
+            color: purple; /* Set the navigation link text color to purple */
+        }
+		/* Style for table text color */
+    table {
+        color: black; /* Set the table text color to black */
+    }
+</style>
+    </style>
+</head>
+<body data-load="1723728383">
+
+<!-- Sidebar -->
+<div class="w3-sidebar w3-black w3-bar-block" style="width:25%">
+  <h3 class="w3-bar-item "><b>Menu</b></h3>
+  <a href="home" class="w3-bar-item w3-button">Home</a>
+  <a href="upload" class="w3-bar-item w3-button">Upload Dataset</a>
+  <a href="dataset" class="w3-bar-item w3-button">View Uploaded Dataset</a>
+  <a href="clean" class="w3-bar-item w3-button"> Dataset Cleaning</a>
+  <a href="visualization" class="w3-bar-item w3-button"> Dataset Visualization</a>
+  <a href="edition" class="w3-bar-item w3-button"> Dataset Manipulation</a>
+  <a href="training" class="w3-bar-item w3-button">Dataset Training</a>
+</div>
+
+<!-- Page Content -->
+<div style="margin-left:25%">
+
+<div class="w3-container w3-purple">
+  <h1>Enhanced IDS with Machine Learning</h1>
+</div>
+
+{% block content %}
+{% endblock %}
+
+</body>
+<script src="https://code.jquery.com/jquery-3.6.0.slim.min.js"></script>
+<script src="static/js/ml.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+
+        $().jqLoad();
+    });
+</script>
+</html>

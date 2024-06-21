@@ -1,0 +1,31 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="w3-card-4 w3-margin">
+    <header class="w3-container w3-blue">
+        <h1>Edition - Drop Labels</h1>
+    </header>
+
+    <div class="w3-container">
+        <form method="POST">
+            <label for="label_to_drop">Choose Label to Drop:</label>
+            <select id="label_to_drop" name="label_to_drop" class="w3-select" required>
+                <option value="">-- Select a label to drop --</option>
+                {% for label in unique_labels %}
+                    <option value="{{ label }}">{{ label }}</option>
+                {% endfor %}
+            </select>
+            <br>
+
+            <label for="save_name">Save Cleaned Dataset As:</label>
+            <input type="text" id="save_name" name="save_name" required>
+            <button type="submit" class="w3-button w3-blue" name="save_cleaned">Save Cleaned Data</button>
+        </form>
+        <br>
+    </div>
+
+    <br>
+    <footer class="w3-container w3-blue">
+        <h5></h5>
+    </footer>
+</div>
+{% endblock %}

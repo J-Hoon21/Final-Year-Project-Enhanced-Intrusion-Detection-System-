@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<div class="w3-card-4 w3-margin">
+
+    <header class="w3-container w3-blue">
+      <h1>Upload Dataset(s) (CSV Files only)</h1>
+    </header>
+
+
+<form method="POST" enctype="multipart/form-data">
+    <input type="file" name="dataset" id="dataset" accept=".csv" multiple>
+    <input type="submit" name="sub" value="Upload">
+</form>
+    </form>
+    {% if mgs %}
+    <p class="error"><strong>Info:</strong> {{ mgs }}
+  {% endif %}
+    <br>
+    <footer class="w3-container w3-blue">
+      <h5></h5>
+    </footer>
+    
+    </div>
+
+    
+
+    {% endblock %}

@@ -1,0 +1,31 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<div class="w3-card-4 w3-margin">
+
+    <header class="w3-container w3-blue">
+        <h1>Data Visualization</h1>
+    </header>
+
+    <div class="w3-container">
+        <form method="POST">
+            <h2>Select Folder:</h2>
+            
+            <label for="folder">Choose Folder:</label>
+            <select id="folder" name="folder" class="w3-select" required>
+                <option value="upload">Uploaded Dataset</option>
+                <option value="clean">Cleaned Dataset</option>
+            </select>
+            <br>
+            
+            <button type="submit" class="w3-button w3-blue">Choose Folder</button>
+        </form>
+    </div>
+
+    <br>
+    <footer class="w3-container w3-blue">
+        <h5></h5>
+    </footer>
+
+</div>
+{% endblock %}

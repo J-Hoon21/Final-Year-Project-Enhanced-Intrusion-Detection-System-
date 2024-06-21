@@ -1,0 +1,31 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<div class="w3-card-4 w3-margin">
+
+    <header class="w3-container w3-blue">
+        <h1>Data Cleaning</h1>
+    </header>
+
+    <div class="w3-container">
+        <form method="POST">
+            <label for="selected_file">Select CSV file(s) to clean: (Use Ctrl Key to select multiple files)</label><br>
+            <select id="selected_file" name="selected_file" multiple style="height: 200px;" required>
+                {% for file in dataset_files %}
+                <option value="{{ file }}">{{ file }}</option>
+                {% endfor %}
+            </select><br><br>
+            <button type="submit">Concatenate and Clean</button>
+        </form>
+        {% if error %}
+        <p class="error"><strong>Error:</strong> {{ error }}
+        {% endif %}
+    </div>
+
+    <br>
+    <footer class="w3-container w3-blue">
+        <h5></h5>
+    </footer>
+
+</div>
+{% endblock %}

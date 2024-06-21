@@ -1,0 +1,42 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<div class="w3-card-4 w3-margin">
+
+    <header class="w3-container w3-blue">
+        <h1>Data Training</h1>
+    </header>
+
+    <div class="w3-container">
+        <form method="POST">
+            <h2>Select Data and Algorithm</h2>
+
+            <label for="selected_file">Select Clean Data File:</label>
+            <select id="selected_file" name="selected_file" class="w3-select" required>
+                <option value="">-- Select a file --</option>
+                {% for file in dataset_files %}
+                    <option value="{{ file }}">{{ file }}</option>
+                {% endfor %}
+            </select>
+            <br><br>
+
+            <label for="algorithm">Select Algorithm:</label>
+            <select id="algorithm" name="algorithm" class="w3-select" required>
+                <option value="">-- Select an algorithm --</option>
+                {% for option, _ in algorithm_options.items() %}
+                    <option value="{{ option }}">{{ option }}</option>
+                {% endfor %}
+            </select>
+            <br>
+
+            <button type="submit" class="w3-button w3-blue">Train</button>
+        </form>
+    </div>
+
+    <br>
+    <footer class="w3-container w3-blue">
+        <h5></h5>
+    </footer>
+
+</div>
+{% endblock %}

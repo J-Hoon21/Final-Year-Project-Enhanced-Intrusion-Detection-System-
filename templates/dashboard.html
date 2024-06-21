@@ -1,0 +1,64 @@
+{% extends "dashboard_layout.html" %}
+{% block content %}
+<div class="w3-card-4 w3-margin">
+    <header class="w3-container w3-blue">
+        <h1>Dashboard Simulator</h1>
+    </header>
+    
+    {% if msg %}
+    <div class="w3-container w3-red">
+        <p>{{ msg }}</p>
+    </div>
+    {% endif %}
+    
+    <form class="w3-container" action="" method="post" enctype="multipart/form-data">
+        <label class="w3-text-teal"><b>Upload CSV File:</b></label>
+        <input class="w3-input w3-border w3-light-grey" type="file" name="csv_file" accept=".csv" required>
+        <br>
+        <label class="w3-text-teal"><b>Upload Trained Model:</b></label>
+        <input class="w3-input w3-border w3-light-grey" type="file" name="model_file" accept=".pkl" required>
+        <br>
+        <label class="w3-text-teal"><b>Upload Label Encoder File:</b></label>
+        <input class="w3-input w3-border w3-light-grey" type="file" name="encoder_file" accept=".csv" required>
+        <br>
+        <input class="w3-btn w3-blue-grey" name="detect" type="submit" value="Simulate">
+    </form>
+    
+    {% if data %}
+	<div class="scroll-table" style="max-height: 500px; overflow-y: auto;">
+    <h2>Real-Time Scan Results</h2>
+    <table class="w3-table-all w3-hoverable w3-responsive">
+        <thead>
+            <tr>
+                <th>Time</th>
+                <th>Predicted Label</th>
+                <th>Protocol</th>
+                <th>Flow Duration</th>
+                <th>Total Fwd Packets</th>
+                <th>Total Backward Packets</th>
+                <th>Total Length of Fwd Packets</th>
+                <th>Total Length of Bwd Packets</th>
+                <th>Fwd Packet Length Max</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for row in data %}
+            <tr>
+                <td>{{ row['Time'] }}</td>
+                <td>{{ row['Predicted_Label'] }}</td>
+                <td>{{ row[' Protocol'] }}</td>
+                <td>{{ row[' Flow Duration'] }}</td>
+                <td>{{ row[' Total Fwd Packets'] }}</td>
+                <td>{{ row[' Total Backward Packets'] }}</td>
+                <td>{{ row['Total Length of Fwd Packets'] }}</td>
+                <td>{{ row[' Total Length of Bwd Packets'] }}</td>
+                <td>{{ row[' Fwd Packet Length Max'] }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+	</div>
+    {% endif %}
+</div>
+</div>
+{% endblock %}

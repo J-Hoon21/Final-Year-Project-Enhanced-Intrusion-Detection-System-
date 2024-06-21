@@ -1,0 +1,48 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="w3-card-4 w3-margin">
+<header class="w3-container w3-blue">
+    <h1>Edition - Balanced Data</h1>
+</header>
+    
+    <h2>Before Balancing</h2>
+    <table class="w3-table-all w3-hoverable">
+        <tr>
+            <th>Label</th>
+            <th>Count</th>
+        </tr>
+        {% for label, count in initial_labels.items() %}
+        <tr>
+            <td>{{ label }}</td>
+            <td>{{ count }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    <p>Initial Shape: {{ initial_shape }}</p>
+    
+    <h2>After Balancing</h2>
+    <table class="w3-table-all w3-hoverable">
+        <tr>
+            <th>Label</th>
+            <th>Count</th>
+        </tr>
+        {% for label, count in balanced_labels.items() %}
+        <tr>
+            <td>{{ label }}</td>
+            <td>{{ count }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    <p>Shape After Balancing: {{ balanced_shape }}</p>
+    
+    <form method="POST">
+        <label for="save_name">Save Balanced Dataset As:</label>
+        <input type="text" id="save_name" name="save_name" required>
+        <button type="submit" class="w3-button w3-blue" name="save_balanced">Save Balanced Data</button>
+    </form>
+    <br>
+    <footer class="w3-container w3-blue">
+        <h5></h5>
+    </footer>
+</div>
+{% endblock %}

@@ -1,0 +1,65 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<div class="w3-card-4 w3-margin">
+
+    <header class="w3-container w3-blue">
+        <h1>Data Exploration</h1>
+    </header>
+
+    <div class="w3-container">
+        <form method="POST">
+            <label for="selected_file">Select Uploaded CSV file:</label>
+            <select id="selected_file" name="selected_file" required>
+                <option value="">-- Select a file --</option>
+                {% for file in dataset_files %}
+                    <option value="{{ file }}">{{ file }}</option>
+                {% endfor %}
+            </select>
+            <button type="submit">Show Data</button>
+        </form>
+        
+        {% if selected_data is not none %}
+            <h2>Selected Dataset</h2>
+            <div class="w3-responsive">
+                {{ selected_data.head(10).to_html(classes='w3-table-all w3-hoverable', escape=False) | safe }}
+            </div>
+            
+            <!-- Display Data Types -->
+            {% if data_types is defined %}
+                <h2>Data Types</h2>
+                <div class="w3-responsive">
+                    <table class="w3-table-all w3-hoverable">
+                        <tr>
+                            <th>Column</th>
+                            <th>Data Type</th>
+                        </tr>
+                        {% for column, data_type in data_types.items() %}
+                            <tr>
+                                <td>{{ column }}</td>
+                                <td>{{ data_type }}</td>
+                            </tr>
+                        {% endfor %}
+                    </table>
+                </div>
+            {% endif %}
+            
+            <!-- Check if shape_info is defined -->
+            {% if shape_info is defined %}
+                <h2>Shape Information</h2>
+                <div>
+                    Number of Rows: {{ shape_info[0] }}<br>
+                    Number of Columns: {{ shape_info[1] }}
+                </div>
+            {% endif %}
+        {% endif %}
+    </div>
+    
+    <br>
+    <footer class="w3-container w3-blue">
+        <h5></h5>
+    </footer>
+    
+</div>
+
+{% endblock %}

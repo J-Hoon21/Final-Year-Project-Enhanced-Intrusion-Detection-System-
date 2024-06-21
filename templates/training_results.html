@@ -1,0 +1,57 @@
+{% extends "layout.html" %}
+{% block content %}
+
+
+<div class="w3-card-4 w3-margin">
+    <header class="w3-container w3-blue">
+        <h1>Data Training Results</h1>
+    </header>
+
+    <div class="w3-container">
+        <h2>Dataset Chosen</h2>
+        <p><strong>Selected File:</strong> {{ selected_file }}</p>
+        <p><strong>Selected Algorithm:</strong> {{ selected_algorithm }}</p>
+
+        <h2>Accuracy:</h2>
+        <p>{{ accuracy }}</p>
+
+        <h2>Classification Report:</h2>
+        <pre>{{ classification_report }}</pre>
+
+        <h2>Confusion Matrix:</h2>
+        <table class="w3-table-all w3-hoverable">
+            <thead>
+                <tr>
+                    <th></th>
+                    {% for label in confusion_matrix_df.columns %}
+                    <th>{{ label }}</th>
+                    {% endfor %}
+                </tr>
+            </thead>
+            <tbody>
+                {% for label in confusion_matrix_df.index %}
+                <tr>
+                    <th>{{ label }}</th>
+                    {% for value in confusion_matrix_df.loc[label] %}
+                    <td>{{ value }}</td>
+                    {% endfor %}
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <h2>Confusion Matrix Heatmap:</h2>
+        <img src="data:image/png;base64,{{ heatmap_filename }}" alt="Confusion Matrix" class="w3-image">
+
+        <!-- Download Model Button -->
+        <a href="{{ url_for('download_model') }}" class="w3-btn w3-blue" download>Download Model</a>
+    </div>
+
+    <br>
+
+    <footer class="w3-container w3-blue">
+        <h5></h5>
+    </footer>
+</div>
+
+{% endblock %}

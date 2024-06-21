@@ -1,0 +1,59 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<div class="w3-card-4 w3-margin">
+
+    <header class="w3-container w3-blue">
+        <h1>Data Visualization</h1>
+    </header>
+
+    <div class="w3-container">
+        <form method="POST">
+            <h2>Visualize Data</h2>
+            <input type="hidden" name="folder" value="{{ folder }}">
+            <label for="file">Select File:</label>
+            <select id="file" name="file" class="w3-select" required>
+                <option value="">-- Select a file --</option>
+                {% for file in available_files %}
+                    <option value="{{ file }}">{{ file }}</option>
+                {% endfor %}
+            </select>
+            <br>
+
+            <button type="submit" class="w3-button w3-blue" name="visualize">Visualize Data</button>
+        </form>
+
+        {% if label_counts is defined %}
+        <h2>Label Counts:</h2>
+        <div class="w3-responsive">
+            <table class="w3-table-all w3-hoverable">
+                <thead>
+                    <tr>
+                        <th>Label</th>
+                        <th>Count</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for label, count in label_counts.items() %}
+                    <tr>
+                        <td>{{ label }}</td>
+                        <td>{{ count }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <h2>Label Distribution Chart:</h2>
+        <img src="data:image/png;base64,{{ plot_base64 }}" alt="Label Distribution" class="w3-image">
+
+        {% endif %}
+    </div>
+
+    <br>
+    <footer class="w3-container w3-blue">
+        <h5></h5>
+    </footer>
+
+</div>
+{% endblock %}

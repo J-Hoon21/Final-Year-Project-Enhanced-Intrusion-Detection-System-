@@ -1,0 +1,42 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="w3-card-4 w3-margin">
+    <header class="w3-container w3-blue">
+        <h1>Data Manipulation & Transformation</h1>
+    </header>
+
+    <div class="w3-container">
+        <form method="POST">
+		<h2>Select File and Action:</h2>
+            <input type="hidden" name="folder" value="{{ folder }}">
+            <div class="w3-container">
+                <label for="file">Select Clean Data File:</label>
+                <select id="file" name="file" class="w3-select" required>
+                    <option value="">-- Select a file --</option>
+                    {% for file in available_files %}
+                        <option value="{{ file }}">{{ file }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+			<br>
+
+            <div class="w3-container">
+                <label for="action">Select Action:</label>
+                <select id="action" name="action" class="w3-select" required>
+				    <option value="">-- Select Action --</option>
+                    <option value="balance">Balance Dataset</option>
+					<option value="combine">Combine Labels</option>
+                    <option value="drop">Drop Labels</option>
+                </select>
+            </div>
+            
+            <button type="submit" class="w3-button w3-blue" name="perform_action">Perform Action</button>
+        </form>
+    </div>
+
+    <br>
+    <footer class="w3-container w3-blue">
+        <h5></h5>
+    </footer>
+</div>
+{% endblock %}

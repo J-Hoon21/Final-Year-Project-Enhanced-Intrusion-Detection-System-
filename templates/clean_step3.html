@@ -1,0 +1,42 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<div class="w3-card-4 w3-margin">
+
+    <header class="w3-container w3-blue">
+        <h1>Data Cleaning Step 3: Remove Socket Features and Columns with Single Values</h1>
+    </header>
+
+    <div class="w3-container">
+        <h2>Concatenated Data After Removing Socket Features and Columns with Single Values</h2>
+        <div class="w3-responsive">
+            {{ tables[0]|safe }}
+        </div>
+        <br>
+        <!-- Display the counts of 'inf', '-inf', and NaN values -->
+        <div>
+            DataFrame Shape: {{ shape_info[0] }} rows x {{ shape_info[1] }} columns
+        </div>
+        <br>
+
+        <!-- Display the list of dropped columns -->
+        {% if dropped_columns %}
+        <div>
+            Dropped Columns: {{ dropped_columns|join(', ') }}
+        </div>
+        <br>
+        {% endif %}
+        
+        <form method="POST" action="/clean_step4">
+            <button type="submit">Proceed to Step 4</button>
+        </form>
+    </div>
+
+    <br>
+    <footer class="w3-container w3-blue">
+        <h5>Step 4: Save Cleaned Data</h5>
+    </footer>
+
+</div>
+
+{% endblock %}

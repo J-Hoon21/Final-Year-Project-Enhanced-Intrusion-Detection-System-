@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<div class="w3-card-4 w3-margin">
+
+    <header class="w3-container w3-blue">
+        <h1>Data Cleaning Step 4: Save Cleaned Data</h1>
+    </header>
+
+    <div class="w3-container">
+        <form method="POST">
+            <h2>Save Cleaned Data</h2>
+            <p>The cleaned data will be saved to the following location:</p>
+            <p><strong>{{ clean_file_path }}</strong></p>
+            <br>
+            <label for="clean_filename">Enter a filename for the cleaned data:</label>
+            <input type="text" id="clean_filename" name="clean_filename" required>
+            <button type="submit" class="w3-button w3-blue">Save Cleaned Data</button>
+        </form>
+        <br>
+    </div>
+
+    <br>
+    <footer class="w3-container w3-blue">
+        <h5></h5>
+    </footer>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,36 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<div class="w3-card-4 w3-margin">
+
+    <header class="w3-container w3-blue">
+        <h1>Clean Step 1: Concatenated Data</h1>
+    </header>
+
+    <div class="w3-container">
+        <h2>Concatenated Data Preview</h2>
+        <div class="w3-responsive">
+            {{ tables[0]|safe }}
+        </div>
+        <br>
+        <!-- Display the counts of 'inf', '-inf', and NaN values -->
+        <div>
+            Number of 'inf' and '-inf' Values: {{ num_inf }}<br>
+            Number of NaN Values: {{ num_nan }}<br>
+			Number of Duplicate Rows: {{ num_duplicates }}<br> 
+            DataFrame Shape: {{ shape_info[0] }} rows x {{ shape_info[1] }} columns
+        </div>
+        <br>
+        <form method="POST" action="/clean_step2">
+            <button type="submit">Proceed to Step 2</button>
+        </form>
+    </div>
+
+    <br>
+    <footer class="w3-container w3-blue">
+        <h5>Step 2: Remove Duplicate Rows, 'inf', '-inf' and NaN Values</h5>
+    </footer>
+
+</div>
+
+{% endblock %}

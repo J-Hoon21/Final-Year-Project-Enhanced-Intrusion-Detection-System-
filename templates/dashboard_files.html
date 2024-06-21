@@ -1,0 +1,43 @@
+{% extends "dashboard_layout.html" %}
+{% block content %}
+<div class="w3-card-4 w3-margin">
+    <header class="w3-container w3-blue">
+        <h1>File Management</h1>
+    </header>
+    <div class="w3-container">
+        <h2>Uploaded Files</h2>
+        <form action="{{ url_for('dashboard_files') }}" method="post">
+            <ul>
+                {% for file in upload_files %}
+                <li>
+                    <label>
+                        <input type="checkbox" name="multiple_files_selection[]" value="{{ file }}">
+                        {{ file }}
+                    </label>
+                </li>
+				
+                {% endfor %}
+            </ul>
+			<input class="w3-btn w3-red" type="submit" name="download_files" value="Download">
+			<input class="w3-btn w3-red" type="submit" name="delete_files" value="Delete">
+        </form>
+    </div>
+    <div class="w3-container">
+        <h2>Cleaned Files</h2>
+        <form action="{{ url_for('dashboard_files') }}" method="post">
+            <ul>
+                {% for file in clean_files %}
+                <li>
+                    <label>
+                        <input type="checkbox" name="multiple_files_selection[]" value="{{ file }}">
+                        {{ file }}
+                    </label>
+                </li>
+                {% endfor %}
+            </ul>
+				<input class="w3-btn w3-red" type="submit" name="download_files" value="Download">
+				<input class="w3-btn w3-red" type="submit" name="delete_files" value="Delete">
+        </form>
+    </div>
+</div>
+{% endblock %}
